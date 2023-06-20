@@ -18,7 +18,7 @@ public class Pa2U2P4CrApplication implements CommandLineRunner {
 	@Autowired
 	private IAutorService autorService;
     @Autowired
-    private ILibroService iLibroService;
+    private ILibroService libroService;
 
 	
 	public static void main(String[] args) {
@@ -29,22 +29,35 @@ public class Pa2U2P4CrApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		
-		Set<Autor> autorSetList = new HashSet<>();
-		Set<Libro>libroSetList = new HashSet<>();
+		Set<Autor> autores = new HashSet<>();
+		Set<Libro>libros = new HashSet<>();
 		
 		Autor autor= new Autor();
 		autor.setNombre("Jhon");
 		autor.setApellido("Green");
-	    autorSetList.add(autor);
-	    autor.setLibros(libroSetList);
+	   
+		Autor autor1= new Autor();
+		autor1.setNombre("Carlos");
+		autor1.setApellido("Ruiz Zafón");
+	    autores.add(autor);
+	    autores.add(autor1);
 		
 		Libro libro = new Libro();
 		libro.setTitulo("Buscando a Alaska");
 		libro.setEditorial("Bermeu");
-		libroSetList.add(libro);
-		libro.setAutores(autorSetList);
+		Libro libro1 = new Libro();
+		libro1.setTitulo("Buscando a Alaska");
+		libro1.setEditorial("Bermeu");
 		
-		this.autorService.agregar(autor);
+		libros.add(libro);
+		libros.add(libro1);
+		autor.setLibros(libros);
+		libro.setAutores(autores);
+		
+		//this.autorService.agregar(autor);
+		//this.libroService.agregar(libro);
+		
+		
 		
 		
 	}
