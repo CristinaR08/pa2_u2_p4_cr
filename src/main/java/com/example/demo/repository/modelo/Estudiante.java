@@ -1,17 +1,44 @@
 package com.example.demo.repository.modelo;
 
+import org.hibernate.annotations.CollectionId;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+
+@Table(name = "estudiante")
+@Entity //cuando mapeo una tabla con un objeto pasa a ser una ENTIDAD
 public class Estudiante {
+	
+	@Id
+	@SequenceGenerator(name = "seq_estudiante_generador",sequenceName = "seq_estudiante",allocationSize = 1)//AllocantionSize tiene que ver con el valor de incremento que se puso en la base de datos
+	@GeneratedValue(generator = "seq_estudiante_generador",strategy = GenerationType.SEQUENCE)
+	@Column(name= "estu_id")
+	private Integer id;
+	
+	@Column(name = "estu_cedula")
+	private String cedula;
+	
+	@Column(name = "estu_nombre")
 	private String nombre;
+	
+	@Column(name = "estu_apellido")
 	private String apellido;
-	private String identificacion;
+	
+
+	
+	
 	
 	@Override
 	public String toString() {
-		return "Estudiante [nombre=" + nombre + ", apellido=" + apellido + ", identificacion=" + identificacion + "]";
+		return "Estudiante [id=" + id + ", cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + "]";
 	}
 	
-	//getters y setters
-	
+	//SET y GET
 	public String getNombre() {
 		return nombre;
 	}
@@ -24,13 +51,11 @@ public class Estudiante {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	public String getIdentificacion() {
-		return identificacion;
+	public String getCedula() {
+		return cedula;
 	}
-	public void setIdentificacion(String identificacion) {
-		this.identificacion = identificacion;
+	public void setCedula(String cedula) {
+		this.cedula = cedula;
 	}
-	
-	
-	
+
 }
